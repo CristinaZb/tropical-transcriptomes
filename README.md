@@ -35,7 +35,11 @@ ${spp}/
 
 ## Quality Control
 
-Quality control of Illumina reads using FastQC/MultiQC (see [`scripts/01_fastqc.sh`](scripts/01_fastqc.sh) and [`scripts/01_multiqc.sh`](scripts/01_multiqc.sh))
+Quality control of Illumina reads using FastQC/MultiQC.
+
+module load fastqc/0.12.1
+SAM=CEDRELA-3-LEAF
+fastqc --threads 4 --outdir ./${DIR}_fastqc/ ../01_Raw_Reads/${SAM}_R1_001.fastq.gz ../01_Raw_Reads/${SAM}_R2_001.fastq.gz
 
 ## Trimming
 
