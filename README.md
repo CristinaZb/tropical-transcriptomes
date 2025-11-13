@@ -35,20 +35,45 @@ ${spp}/
 
 ## Quality Control
 
-Quality control of Illumina reads using FastQC/MultiQC.
+Quality control of Illumina reads using FastQC/MultiQC, following the structure:
 
+```bash
 module load fastqc/0.12.1
+
 SAM=CEDRELA-3-LEAF
 fastqc --threads 4 --outdir ./${DIR}_fastqc/ ../01_Raw_Reads/${SAM}_R1_001.fastq.gz ../01_Raw_Reads/${SAM}_R2_001.fastq.gz
+```
 
 ## Trimming
 
+Trimmomatic was used to remove low quality and residual adapter sequence. 
 
+```bash
+
+
+```
 
 ## Assembling Transcriptomes
 
+To create a single reference transcriptome for all samples, each sample was separately assembled, pool all the resulting transcripts, cluster them into groups that hopefully represent single genes, and finally select a single "best" representative transcript for each gene.
+
+
+```bash
+SAM=K21
+
+Trinity --seqType fq \
+  --left ../02_Quality_Control/trim_${SAM}_R1.fastq.gz \
+  --right ../02_Quality_Control/trim_${SAM}_R2.fastq.gz \
+  --min_contig_length 300 \
+  --CPU 36 \
+  --max_memory 100G \
+  --output trinity_${SAM} \
+  --full_cleanup
+```
 
 ## Identifying the Coding Regions
+
+
 
 ## Determining and Removing Redundant Transcripts
 
