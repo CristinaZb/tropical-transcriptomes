@@ -39,6 +39,8 @@ Quality control of Illumina reads using FastQC/MultiQC (see [`scripts/01_fastqc.
 
 ## Trimming
 
+
+
 ## Assembling Transcriptomes
 
 
