@@ -12,35 +12,35 @@ Raw RNA-Seq reads are available at the NCBI:
 
 | Species                     | Tissue       | Library         | SRA accession | BioSample accession | BioProject   |
 |----------------------------|--------------|-----------------|---------------|---------------------|--------------|
-| Handroanthus chrysanthus   | Cambium      | CAM-POOL        | SRR35996128   | SAMN53163668        | PRJNA1359388 |
-| Handroanthus chrysanthus   | Flower buds  | FB-POOL         | SRR35996127   | SAMN53163669        | PRJNA1359388 |
-| Handroanthus chrysanthus   | Leaf buds    | H04-B1          | SRR35996126   | SAMN53163670        | PRJNA1359388 |
-| Handroanthus chrysanthus   | Leaf buds    | H06-B1          | SRR35996124   | SAMN53163672        | PRJNA1359388 |
-| Handroanthus chrysanthus   | Leaf buds    | H10-B1          | SRR35996122   | SAMN53163674        | PRJNA1359388 |
-| Handroanthus chrysanthus   | Leaf         | H04-L1          | SRR35996125   | SAMN53163671        | PRJNA1359388 |
-| Handroanthus chrysanthus   | Leaf         | H06-L1          | SRR35996123   | SAMN53163673        | PRJNA1359388 |
-| Handroanthus chrysanthus   | Leaf         | H10-L1          | SRR35996121   | SAMN53163675        | PRJNA1359388 |
-| Alzatea verticillata       | Cambium      | ALZATEA-CAM     | SRR36004175   | SAMN53199287        | PRJNA1362998 |
-| Alzatea verticillata       | Flower buds  | ALZATEA-BF      | SRR36004174   | SAMN53199288        | PRJNA1362998 |
-| Alzatea verticillata       | Flowers      | ALZATEA-FL      | SRR36004173   | SAMN53199289        | PRJNA1362998 |
-| Alzatea verticillata       | Leaf buds    | ALZATEA-2-YH    | SRR36004172   | SAMN53199290        | PRJNA1362998 |
-| Alzatea verticillata       | Leaf buds    | ALZATEA-3-YH    | SRR36004171   | SAMN53199291        | PRJNA1362998 |
-| Alzatea verticillata       | Leaf buds    | ALZATEA-6-YH    | SRR36004170   | SAMN53199292        | PRJNA1362998 |
-| Alzatea verticillata       | Leaf         | ALZATEA-6-LEAF  | SRR36004169   | SAMN53199293        | PRJNA1362998 |
-| Alzatea verticillata       | Leaf         | ALZATEA-3-LEAF  | SRR36004168   | SAMN53199294        | PRJNA1362998 |
-| Alzatea verticillata       | Leaf         | ALZATEA-2-LEAF  | SRR36004167   | SAMN53199295        | PRJNA1362998 |
-| Cedrela montana            | Cambium      | CEDRELA-CAM     | SRR36016291   | SAMN53202879        | PRJNA1363130 |
-| Cedrela montana            | Flower buds  | CEDRELA-BF      | SRR36016290   | SAMN53202880        | PRJNA1363130 |
-| Cedrela montana            | Flowers      | CEDRELA-FL      | SRR36016289   | SAMN53202881        | PRJNA1363130 |
-| Cedrela montana            | Leaf buds    | CEDRELA-3-YH    | SRR36016288   | SAMN53202882        | PRJNA1363130 |
-| Cedrela montana            | Leaf buds    | CEDRELA-5-YH    | SRR36016287   | SAMN53202883        | PRJNA1363130 |
-| Cedrela montana            | Leaf buds    | CEDRELA-6-YH    | SRR36016286   | SAMN53202884        | PRJNA1363130 |
-| Cedrela montana            | Leaf         | CEDRELA-3-L     | SRR36016285   | SAMN53202885        | PRJNA1363130 |
-| Cedrela montana            | Leaf         | CEDRELA-6-L     | SRR36016284   | SAMN53202886        | PRJNA1363130 |
-| Cedrela montana            | Leaf         | CEDRELA-5-L     | SRR36016283   | SAMN53202887        | PRJNA1363130 |
-| Graffenrieda emarginata    | Flowers      | GRAFF-FL        | SRR36016315   | SAMN53197954        | PRJNA1362976 |
-| Graffenrieda emarginata    | Leaf buds    | GRAFF-YH        | SRR36016314   | SAMN53197964        | PRJNA1362976 |
-| Graffenrieda emarginata    | Leaf         | GRAFF-LEAF      | SRR36016313   | SAMN53198155        | PRJNA1362976 |
+| *Handroanthus chrysanthus*   | Cambium      | CAM-POOL        | SRR35996128   | SAMN53163668        | PRJNA1359388 |
+| *Handroanthus chrysanthus*   | Flower buds  | FB-POOL         | SRR35996127   | SAMN53163669        | PRJNA1359388 |
+| *Handroanthus chrysanthus*   | Leaf buds    | H04-B1          | SRR35996126   | SAMN53163670        | PRJNA1359388 |
+| *Handroanthus chrysanthus*   | Leaf buds    | H06-B1          | SRR35996124   | SAMN53163672        | PRJNA1359388 |
+| *Handroanthus chrysanthus*   | Leaf buds    | H10-B1          | SRR35996122   | SAMN53163674        | PRJNA1359388 |
+| *Handroanthus chrysanthus*   | Leaf         | H04-L1          | SRR35996125   | SAMN53163671        | PRJNA1359388 |
+| *Handroanthus chrysanthus*   | Leaf         | H06-L1          | SRR35996123   | SAMN53163673        | PRJNA1359388 |
+| *Handroanthus chrysanthus*   | Leaf         | H10-L1          | SRR35996121   | SAMN53163675        | PRJNA1359388 |
+| *Alzatea verticillata*       | Cambium      | ALZATEA-CAM     | SRR36004175   | SAMN53199287        | PRJNA1362998 |
+| *Alzatea verticillata*       | Flower buds  | ALZATEA-BF      | SRR36004174   | SAMN53199288        | PRJNA1362998 |
+| *Alzatea verticillata*       | Flowers      | ALZATEA-FL      | SRR36004173   | SAMN53199289        | PRJNA1362998 |
+| *Alzatea verticillata*       | Leaf buds    | ALZATEA-2-YH    | SRR36004172   | SAMN53199290        | PRJNA1362998 |
+| *Alzatea verticillata*       | Leaf buds    | ALZATEA-3-YH    | SRR36004171   | SAMN53199291        | PRJNA1362998 |
+| *Alzatea verticillata*       | Leaf buds    | ALZATEA-6-YH    | SRR36004170   | SAMN53199292        | PRJNA1362998 |
+| *Alzatea verticillata*       | Leaf         | ALZATEA-6-LEAF  | SRR36004169   | SAMN53199293        | PRJNA1362998 |
+| *Alzatea verticillata*       | Leaf         | ALZATEA-3-LEAF  | SRR36004168   | SAMN53199294        | PRJNA1362998 |
+| *Alzatea verticillata*       | Leaf         | ALZATEA-2-LEAF  | SRR36004167   | SAMN53199295        | PRJNA1362998 |
+| *Cedrela montana*            | Cambium      | CEDRELA-CAM     | SRR36016291   | SAMN53202879        | PRJNA1363130 |
+| *Cedrela montana*            | Flower buds  | CEDRELA-BF      | SRR36016290   | SAMN53202880        | PRJNA1363130 |
+| *Cedrela montana*            | Flowers      | CEDRELA-FL      | SRR36016289   | SAMN53202881        | PRJNA1363130 |
+| *Cedrela montana*            | Leaf buds    | CEDRELA-3-YH    | SRR36016288   | SAMN53202882        | PRJNA1363130 |
+| *Cedrela montana*            | Leaf buds    | CEDRELA-5-YH    | SRR36016287   | SAMN53202883        | PRJNA1363130 |
+| *Cedrela montana*            | Leaf buds    | CEDRELA-6-YH    | SRR36016286   | SAMN53202884        | PRJNA1363130 |
+| *Cedrela montana*            | Leaf         | CEDRELA-3-L     | SRR36016285   | SAMN53202885        | PRJNA1363130 |
+| *Cedrela montana*            | Leaf         | CEDRELA-6-L     | SRR36016284   | SAMN53202886        | PRJNA1363130 |
+| *Cedrela montana*            | Leaf         | CEDRELA-5-L     | SRR36016283   | SAMN53202887        | PRJNA1363130 |
+| *Graffenrieda emarginata*    | Flowers      | GRAFF-FL        | SRR36016315   | SAMN53197954        | PRJNA1362976 |
+| *Graffenrieda emarginata*    | Leaf buds    | GRAFF-YH        | SRR36016314   | SAMN53197964        | PRJNA1362976 |
+| *Graffenrieda emarginata*    | Leaf         | GRAFF-LEAF      | SRR36016313   | SAMN53198155        | PRJNA1362976 |
 
 
 ## Table of Contents
@@ -54,8 +54,9 @@ Raw RNA-Seq reads are available at the NCBI:
 - [Evaluating the Assembly](#evaluating-the-assembly)
 - [Quantifying gene expression](#quantifying-gene-expression)
 - [Functional Annotation](#functional-annotation)
-- [Reproducibility & environment](#reproducibility--environment)
+- [Reproducibility](#reproducibility)
 - [Software references](#software-references)
+- [Contact](#contact)
 
 ## Quality Control
 
@@ -475,7 +476,7 @@ Multiple ``-d`` flags define the search order; EnTAP selects the best supported 
 
 ## Software references
 
-+ Andrews, S. (2012) FastQC a quality control tool for high throughput sequence data. Available at: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/ (Accessed: 28 February 2020).
++ Andrews, S. (2012) FastQC a quality control tool for high throughput sequence data. Available at: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/.
  
 + Bolger, A.M., Lohse, M. and Usadel, B. (2014) ‘Trimmomatic: A flexible trimmer for Illumina sequence data’, Bioinformatics, 30(15), pp. 2114–2120. Available at: https://doi.org/10.1093/bioinformatics/btu170.
  
@@ -499,3 +500,5 @@ Multiple ``-d`` flags define the search order; EnTAP selects the best supported 
 
 + Wood, D.E., Lu, J. and Langmead, B. (2019) ‘Improved metagenomic analysis with Kraken 2’, Genome Biology, 20(1), p. 257. Available at: https://doi.org/10.1186/s13059-019-1891-0.
 
+## Contact
+Cristina Zamora Ballesteros (cristinazamoraballesteros@gmail.com).
