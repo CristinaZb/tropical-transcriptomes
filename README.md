@@ -1,7 +1,5 @@
 # Tropical-transcriptomes
-Bioinformatics pipeline and configs for de novo transcriptome assembly of Alzatea verticillata, Cedrela montana, Graffenrieda emarginata, and Handroanthus chrysanthus.
-
-The same code runs for all species using a ${spp} placeholder.
+Bioinformatics pipeline and configs for de novo transcriptome assembly of *Alzatea verticillata*, *Cedrela montana*, *Graffenrieda emarginata*, and *Handroanthus chrysanthus*.
 
 ## Data overview
 
