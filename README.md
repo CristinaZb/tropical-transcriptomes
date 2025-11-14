@@ -3,6 +3,9 @@ Bioinformatics pipeline and configs for de novo transcriptome assembly of *Alzat
 
 ## Data overview
 
+Experim design
+Explicación de dónde se corrieron estos scripts (xanadú) y usando SLURM.
+
 ## Data availability
 
 Raw RNA-Seq reads are available at the NCBI SRA under the following BioProject Accessions.
@@ -17,26 +20,6 @@ Raw RNA-Seq reads are available at the NCBI SRA under the following BioProject A
 ## Table of Contents
 
 
-
-
-
-Explicación de dónde se corrieron estos scripts (xanadú) y usando SLURM.
-
-Folder structure:
-
-```text
-${spp}/
-├── 01_Raw_Reads
-├── 02_Quality_Control
-├── 03_Assembly
-├── 04_Coding_Regions
-├── 05_Clustering
-├── 06_Assembly_Control
-├── 07_Annotation
-├── 08_Expression
-├── 09_DEA
-├── 10_Functional_analysis
-```
 
 ## Quality Control
 
@@ -431,7 +414,3 @@ Parameter notes:
 ``--entap-ini`` controls coverage/e-value thresholds, taxonomy, and optional expression filters (e.g., FPKM ≥ 0.5).
 
 Multiple ``-d`` flags define the search order; EnTAP selects the best supported hit considering alignment quality and taxonomic relevance.
-
-## Differential expression analysis
-
-
