@@ -1,21 +1,47 @@
 # Tropical-transcriptomes
-Bioinformatics pipeline and configs for de novo transcriptome assembly of *Alzatea verticillata*, *Cedrela montana*, *Graffenrieda emarginata*, and *Handroanthus chrysanthus*.
+Bioinformatics pipeline and configs for *de novo* transcriptome assembly of *Alzatea verticillata*, *Cedrela montana*, *Graffenrieda emarginata*, and *Handroanthus chrysanthus*.
 
 ## Data overview
 
-Experim design
-Explicación de dónde se corrieron estos scripts (xanadú) y usando SLURM.
+We sampled four tissues —cambium, flower buds, leaf buds, and leaves— from four Neotropical tree species (*Alzatea verticillata*, *Cedrela montana*, *Graffenrieda emarginata*, *Handroanthus chrysanthus*). Libraries were sequenced on Illumina NovaSeq 6000 (2×150 bp). Leaf buds and leaves include three biological replicates from the same trees; for other tissues we pooled equal RNA amounts from 2–3 individuals per species. In total, 39 tissue-specific libraries were generated.
+Analyses were executed on the Xanadú HPC (Institute for Systems Genomics Computational Biology Core - UConn) using SLURM. The command blocks in this README reproduce the exact parameters we used, following the structure of the runs. We followed the RNAseq_nonmodel tutorial (https://github.com/CBC-UCONN/RNAseq_nonmodel) as the operational reference; for detailed system setup and folder scaffolding, please refer to that tutorial.
 
 ## Data availability
 
-Raw RNA-Seq reads are available at the NCBI SRA under the following BioProject Accessions.
+Raw RNA-Seq reads are available at the NCBI:
 
-| Species  | BioProject |
-| ------------- | ------------- |
-| *Handroanthus chrysanthus*  | PRJNA1359388  |
-| *Alzatea verticillata*  | PRJNA1362998  |
-| *Cedrela montana*  | PRJNA1363130  |
-| *Graffenrieda emarginata*  | PRJNA1362976  |
+| Species                     | Tissue       | Library         | SRA accession | BioSample accession | BioProject   |
+|----------------------------|--------------|-----------------|---------------|---------------------|--------------|
+| Handroanthus chrysanthus   | Cambium      | CAM-POOL        | SRR35996128   | SAMN53163668        | PRJNA1359388 |
+| Handroanthus chrysanthus   | Flower buds  | FB-POOL         | SRR35996127   | SAMN53163669        | PRJNA1359388 |
+| Handroanthus chrysanthus   | Leaf buds    | H04-B1          | SRR35996126   | SAMN53163670        | PRJNA1359388 |
+| Handroanthus chrysanthus   | Leaf buds    | H06-B1          | SRR35996124   | SAMN53163672        | PRJNA1359388 |
+| Handroanthus chrysanthus   | Leaf buds    | H10-B1          | SRR35996122   | SAMN53163674        | PRJNA1359388 |
+| Handroanthus chrysanthus   | Leaf         | H04-L1          | SRR35996125   | SAMN53163671        | PRJNA1359388 |
+| Handroanthus chrysanthus   | Leaf         | H06-L1          | SRR35996123   | SAMN53163673        | PRJNA1359388 |
+| Handroanthus chrysanthus   | Leaf         | H10-L1          | SRR35996121   | SAMN53163675        | PRJNA1359388 |
+| Alzatea verticillata       | Cambium      | ALZATEA-CAM     | SRR36004175   | SAMN53199287        | PRJNA1362998 |
+| Alzatea verticillata       | Flower buds  | ALZATEA-BF      | SRR36004174   | SAMN53199288        | PRJNA1362998 |
+| Alzatea verticillata       | Flowers      | ALZATEA-FL      | SRR36004173   | SAMN53199289        | PRJNA1362998 |
+| Alzatea verticillata       | Leaf buds    | ALZATEA-2-YH    | SRR36004172   | SAMN53199290        | PRJNA1362998 |
+| Alzatea verticillata       | Leaf buds    | ALZATEA-3-YH    | SRR36004171   | SAMN53199291        | PRJNA1362998 |
+| Alzatea verticillata       | Leaf buds    | ALZATEA-6-YH    | SRR36004170   | SAMN53199292        | PRJNA1362998 |
+| Alzatea verticillata       | Leaf         | ALZATEA-6-LEAF  | SRR36004169   | SAMN53199293        | PRJNA1362998 |
+| Alzatea verticillata       | Leaf         | ALZATEA-3-LEAF  | SRR36004168   | SAMN53199294        | PRJNA1362998 |
+| Alzatea verticillata       | Leaf         | ALZATEA-2-LEAF  | SRR36004167   | SAMN53199295        | PRJNA1362998 |
+| Cedrela montana            | Cambium      | CEDRELA-CAM     | SRR36016291   | SAMN53202879        | PRJNA1363130 |
+| Cedrela montana            | Flower buds  | CEDRELA-BF      | SRR36016290   | SAMN53202880        | PRJNA1363130 |
+| Cedrela montana            | Flowers      | CEDRELA-FL      | SRR36016289   | SAMN53202881        | PRJNA1363130 |
+| Cedrela montana            | Leaf buds    | CEDRELA-3-YH    | SRR36016288   | SAMN53202882        | PRJNA1363130 |
+| Cedrela montana            | Leaf buds    | CEDRELA-5-YH    | SRR36016287   | SAMN53202883        | PRJNA1363130 |
+| Cedrela montana            | Leaf buds    | CEDRELA-6-YH    | SRR36016286   | SAMN53202884        | PRJNA1363130 |
+| Cedrela montana            | Leaf         | CEDRELA-3-L     | SRR36016285   | SAMN53202885        | PRJNA1363130 |
+| Cedrela montana            | Leaf         | CEDRELA-6-L     | SRR36016284   | SAMN53202886        | PRJNA1363130 |
+| Cedrela montana            | Leaf         | CEDRELA-5-L     | SRR36016283   | SAMN53202887        | PRJNA1363130 |
+| Graffenrieda emarginata    | Flowers      | GRAFF-FL        | SRR36016315   | SAMN53197954        | PRJNA1362976 |
+| Graffenrieda emarginata    | Leaf buds    | GRAFF-YH        | SRR36016314   | SAMN53197964        | PRJNA1362976 |
+| Graffenrieda emarginata    | Leaf         | GRAFF-LEAF      | SRR36016313   | SAMN53198155        | PRJNA1362976 |
+
 
 ## Table of Contents
 
@@ -140,7 +166,7 @@ module load Trinity/2.15.0
 
 SAMPLE="${SAMPLE}"         
 CPU=16
-MEM="100G"                  # high-mem node
+MEM="100G" # high-mem node
 
 Trinity \
   --seqType fq \
