@@ -9,10 +9,10 @@ Raw RNA-Seq reads are available at the NCBI SRA under the following BioProject A
 
 | Species  | BioProject |
 | ------------- | ------------- |
-| Handroanthus chrysanthus  | PRJNA1359388  |
-| Alzatea verticillata  | PRJNA1362998  |
-| Cedrela montana  | PRJNA1363130  |
-| Graffenrieda emarginata  | PRJNA1362976  |
+| *Handroanthus chrysanthus*  | PRJNA1359388  |
+| *Alzatea verticillata*  | PRJNA1362998  |
+| *Cedrela montana*  | PRJNA1363130  |
+| *Graffenrieda emarginata*  | PRJNA1362976  |
 
 ## Table of Contents
 
