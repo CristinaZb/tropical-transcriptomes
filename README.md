@@ -3,8 +3,8 @@ Bioinformatics pipeline and configs for *de novo* transcriptome assembly of *Alz
 
 ## Data overview
 
-We sampled four tissues —cambium, flower buds, leaf buds, and leaves— from four Neotropical tree species (*Alzatea verticillata*, *Cedrela montana*, *Graffenrieda emarginata*, *Handroanthus chrysanthus*). Libraries were sequenced on Illumina NovaSeq 6000 (2×150 bp). Leaf buds and leaves include three biological replicates from the same trees; for other tissues we pooled equal RNA amounts from 2–3 individuals per species. In total, 39 tissue-specific libraries were generated.
-Analyses were executed on the Xanadú HPC (Institute for Systems Genomics Computational Biology Core - UConn) using SLURM. The command blocks in this README reproduce the exact parameters we used, following the structure of the runs. We followed the RNAseq_nonmodel tutorial (https://github.com/CBC-UCONN/RNAseq_nonmodel) as the operational reference; for detailed system setup and folder scaffolding, please refer to that tutorial.
+Five tissues —cambium, flowers, flower buds, leaf buds, and leaves— were collected from four Neotropical tree species (*Alzatea verticillata*, *Cedrela montana*, *Graffenrieda emarginata*, *Handroanthus chrysanthus*). Libraries were sequenced on Illumina NovaSeq 6000 (2×150 bp). Leaf buds and leaves include three biological replicates from the same trees; for other tissues we pooled equal RNA amounts from 2–3 individuals per species. In total, 39 tissue-specific libraries were generated. For detailed information on sampling locations and wet-lab procedures, please refer to the companion article linked to this pipeline (doi). Assembled transcriptomes can be downloaded from Zenodo: doi
+Analyses were executed on the Xanadú HPC (Institute for Systems Genomics Computational Biology Core - UConn) using SLURM job manager. The command blocks in this README reproduce the exact parameters that were used, following the structure of the runs. The RNAseq_nonmodel tutorial (https://github.com/CBC-UCONN/RNAseq_nonmodel) was followed as the operational reference; for detailed system setup and folder scaffolding, please refer to that tutorial.
 
 ## Data availability
 
@@ -45,7 +45,17 @@ Raw RNA-Seq reads are available at the NCBI:
 
 ## Table of Contents
 
-
+- [Quality Control](#quality-control)
+- [Taxonomic filtering (Kraken2)](#taxonomic-filtering-kraken2)
+- [Trimming](#trimming)
+- [Assembling Transcriptomes](#assembling-transcriptomes)
+- [Identifying the Coding Regions](#identifying-the-coding-regions)
+- [Determining and Removing Redundant Transcripts](#determining-and-removing-redundant-transcripts)
+- [Evaluating the Assembly](#evaluating-the-assembly)
+- [Quantifying gene expression](#quantifying-gene-expression)
+- [Functional Annotation](#functional-annotation)
+- [Reproducibility & environment](#reproducibility--environment)
+- [Software references](#software-references)
 
 ## Quality Control
 
@@ -440,3 +450,52 @@ Parameter notes:
 ``--entap-ini`` controls coverage/e-value thresholds, taxonomy, and optional expression filters (e.g., FPKM ≥ 0.5).
 
 Multiple ``-d`` flags define the search order; EnTAP selects the best supported hit considering alignment quality and taxonomic relevance.
+
+## Reproducibility
+
+- FastQC 0.12.1; MultiQC 1.9
+
+- Kraken2 2.1.2 (db: bacteria + archaea + viruses + fungi)
+
+- Trimmomatic 0.39
+
+- Trinity 2.15.0
+
+- TransDecoder 5.3.0; HMMER 3.2.1
+
+- VSEARCH 2.4.3
+
+- rnaQUAST 1.5.2 + GeneMarkS-T 5.1
+
+- BUSCO 5.4.5 (odb10; Viridiplantae lineage)
+
+- Kallisto v0.46.1
+
+- EnTAP (container, via Singularity) with DIAMOND databases: RefSeq, Swiss-Prot, nr
+
+## Software references
+
++ Andrews, S. (2012) FastQC a quality control tool for high throughput sequence data. Available at: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/ (Accessed: 28 February 2020).
+ 
++ Bolger, A.M., Lohse, M. and Usadel, B. (2014) ‘Trimmomatic: A flexible trimmer for Illumina sequence data’, Bioinformatics, 30(15), pp. 2114–2120. Available at: https://doi.org/10.1093/bioinformatics/btu170.
+ 
++ Bray, N.L. et al. (2016) ‘Near-optimal probabilistic RNA-seq quantification’, Nature Biotechnology, 34(5), pp. 525–527. Available at: https://doi.org/10.1038/nbt.3519.
+
++ Bushmanova, E. et al. (2016) ‘rnaQUAST: a quality assessment tool for de novo transcriptome assemblies’, Bioinformatics, 32(14), pp. 2210–2212. Available at: https://doi.org/10.1093/bioinformatics/btw218.
+
++ Ewels, P. et al. (2016) ‘MultiQC: summarize analysis results for multiple tools and samples in a single report’, Bioinformatics, 32(19), pp. 3047–3048. Available at: https://doi.org/10.1093/bioinformatics/btw354.
+
++ Grabherr, M.G. et al. (2011) ‘Full-length transcriptome assembly from RNA-Seq data without a reference genome’, Nature Biotechnology, 29(7), pp. 644–652. Available at: https://doi.org/10.1038/nbt.1883.
+
++ Haas, B.J. et al. (2013) ‘De novo transcript sequence reconstruction from RNA-seq using the Trinity platform for reference generation and analysis’, Nature Protocols, 8(8), pp. 1494–1512. Available at: https://doi.org/10.1038/nprot.2013.084.
+
++ Hart, A.J. et al. (2020) ‘EnTAP: Bringing faster and smarter functional annotation to non‐model eukaryotic transcriptomes’, Molecular Ecology Resources, 20(2), pp. 591–604. Available at: https://doi.org/10.1111/1755-0998.13106.
+
++ Mistry, J. et al. (2021) ‘Pfam: The protein families database in 2021’, Nucleic Acids Research, 49(D1), pp. D412–D419. Available at: https://doi.org/10.1093/nar/gkaa913.
+
++ Rognes, T. et al. (2016) ‘VSEARCH: a versatile open source tool for metagenomics’, PeerJ, 4, p. e2584. Available at: https://doi.org/10.7717/peerj.2584.
+
++ Simão, F.A. et al. (2015) ‘BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs’, Bioinformatics, 31(19), pp. 3210–3212. Available at: https://doi.org/10.1093/bioinformatics/btv351.
+
++ Wood, D.E., Lu, J. and Langmead, B. (2019) ‘Improved metagenomic analysis with Kraken 2’, Genome Biology, 20(1), p. 257. Available at: https://doi.org/10.1186/s13059-019-1891-0.
+
