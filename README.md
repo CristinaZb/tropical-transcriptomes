@@ -53,8 +53,8 @@ Raw RNA-Seq reads are available at the NCBI:
 - [Identifying the Coding Regions](#identifying-the-coding-regions)
 - [Determining and Removing Redundant Transcripts](#determining-and-removing-redundant-transcripts)
 - [Evaluating the Assembly](#evaluating-the-assembly)
-- [Quantifying gene expression](#quantifying-gene-expression)
 - [Functional Annotation](#functional-annotation)
+- [Quantifying gene expression](#quantifying-gene-expression)
 - [Reproducibility](#reproducibility)
 - [Software references](#software-references)
 - [Contact](#contact)
@@ -356,15 +356,55 @@ Notes
 
 ``-m transcriptome`` expects potentially fragmented gene models.
 
+## Functional Annotation
+
+Annotate the non-redundant peptides with EnTAP, which orchestrates DIAMOND homology searches against curated protein databases, applies taxonomic contaminant filtering, and transfers functional terms (e.g., GO/orthology) from the best-supported hits according to ``entap_config.ini``.
+
+**Inputs:**
+
+``centroids_${SPS}.pep`` (non-redundant peptide sequences)
+
+``entap_config.ini``
+
+``entap_run.params``
+
+DIAMOND databases: RefSeq (complete proteins), Swiss-Prot, and nr (*.dmnd)
+
+**Outputs:**
+
+EnTAP run directory (e.g., entap_out/) containing summary tables, best-hit assignments, GO/orthology mappings, and logs.
+
+```bash
+mkdir -p entap_output
+
+module load EnTAP/2.3.0
+
+EnTAP --run \
+    --entap-ini entap_config.ini \
+    --run-ini entap_run.params \
+    --input centroids_${SPS}.pep \
+    --out-dir entap_output/
+```
+
+Parameter notes:
+
+``--entap-ini`` controls coverage/e-value thresholds, taxonomy, and optional expression filters (e.g., FPKM ≥ 0.5).
+
+### Filtering based on contaminants
+
+To further curate the *de novo* assembly and remove non-plant contaminants, we used the taxonomic classification provided by EnTAP. From the ``annotated_contam.faa`` file, which contains proteins flagged as contaminants (fungi, bacteria, archea, insecta), we extracted the corresponding sequence identifiers and used them to filter the centroid transcriptome, removing the associated entries from the centroid FASTA file. 
+
+The resulting clean fasta, depleted of non-plant transcripts, was then used as the reference for expression quantification and all downstream analyses.
+
 ## Quantifying gene expression
 
-Estimate transcript abundances against the non-redundant CDS (“centroids”) using kallisto 0.46.1. This involves (1) building an index from the clustered CDS FASTA and (2) quantifying each paired library against that index. Singletons were not used.
+Estimate transcript abundances against the plant non-redundant CDS using kallisto 0.46.1. This involves (1) building an index from the clustered CDS FASTA and (2) quantifying each paired library against that index. Singletons were not used.
 
 ### 1) Creating an index
 
 **Input:**
 
-``centroids_${SPS}.fasta`` (from clustering)
+``centroids_${SPS}_filtered.fasta``
 
 **Output:**
 
@@ -408,51 +448,6 @@ kallisto quant \
  trim_${SAMPLE}_R2.fastq.gz
 ```
 
-## Functional Annotation
-
-Annotate the non-redundant peptides with EnTAP, which orchestrates DIAMOND homology searches against curated protein databases, applies taxonomic contaminant filtering, and transfers functional terms (e.g., GO/orthology) from the best-supported hits according to ``entap_config.ini``.
-
-**Inputs:**
-
-``centroids_${SPS}.pep`` (non-redundant peptide sequences)
-
-``entap_config.ini``
-
-DIAMOND databases: RefSeq (complete proteins), Swiss-Prot, and nr (*.dmnd)
-
-**Outputs:**
-
-EnTAP run directory (e.g., entap_out/) containing summary tables, best-hit assignments, GO/orthology mappings, and logs.
-
-```bash
-module load singularity
-
-SPS="${SPS}"
-CPU="${SLURM_NTASKS:-16}"
-
-# DIAMOND databases
-REFSEQ_DMND="refseq_complete_proteins.dmnd"
-SWISSPROT_DMND="uniprot_sprot.dmnd"
-NR_DMND="nr_protein.dmnd"
-
-singularity exec entap.sif EnTAP \
-  --runP \
-  --entap-ini entap_config.ini \
-  --threads "${CPU}" \
-  --input "centroids_${SPS}.pep" \
-  -d "${REFSEQ_DMND}" \
-  -d "${SWISSPROT_DMND}" \
-  -d "${NR_DMND}"
-```
-
-Parameter notes:
-
-``--runP`` runs the full pipeline (filtering → DIAMOND searches → functional assignment).
-
-``--entap-ini`` controls coverage/e-value thresholds, taxonomy, and optional expression filters (e.g., FPKM ≥ 0.5).
-
-Multiple ``-d`` flags define the search order; EnTAP selects the best supported hit considering alignment quality and taxonomic relevance.
-
 ## Reproducibility
 
 - FastQC 0.12.1; MultiQC 1.9
@@ -473,7 +468,14 @@ Multiple ``-d`` flags define the search order; EnTAP selects the best supported 
 
 - Kallisto v0.46.1
 
-- EnTAP (container, via Singularity) with DIAMOND databases: RefSeq, Swiss-Prot, nr
+- EnTAP v2.3.0 with DIAMOND databases: 
+
+    - NCBI RefSeq non-redundant protein sequences (Complete genomes, release 232)
+  
+    - UniProt UniRef90 protein clusters (release 2025_06)
+
+    - NCBI non-redundant protein database (2025)
+
 
 ## Software references
 
@@ -502,4 +504,5 @@ Multiple ``-d`` flags define the search order; EnTAP selects the best supported 
 + Wood, D.E., Lu, J. and Langmead, B. (2019) ‘Improved metagenomic analysis with Kraken 2’, Genome Biology, 20(1), p. 257. Available at: https://doi.org/10.1186/s13059-019-1891-0.
 
 ## Contact
+
 Cristina Zamora Ballesteros (cristinazamoraballesteros@gmail.com).
