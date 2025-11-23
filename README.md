@@ -392,7 +392,20 @@ Parameter notes:
 
 ### Filtering based on contaminants
 
-To further curate the *de novo* assembly and remove non-plant contaminants, we used the taxonomic classification provided by EnTAP. From the ``annotated_contam.faa`` file, which contains proteins flagged as contaminants (fungi, bacteria, archea, insecta), we extracted the corresponding sequence identifiers and used them to filter the centroid transcriptome, removing the associated entries from the centroid FASTA file. 
+To further curate the *de novo* assembly and remove non-plant contaminants, we used the taxonomic classification provided by EnTAP. From the ``annotated_contam.faa`` file, which contains proteins flagged as contaminants (fungi, bacteria, archea, insecta), we extracted the corresponding sequence identifiers and used them to filter the centroid transcriptome, removing the associated entries from the centroid FASTA file.
+
+``
+grep -c "^>" 07_EnTAP/entap_output/final_results/annotated_contam.faa
+``
+
+- Extract the IDs of contaminants recorded by EnTAP:
+```
+awk '/^>/{gsub(/^>/,""); print $1}' annotated_contam.faa | sort -u > contam_ids.txt
+```
+- Clean the transcriptome
+```
+seqkit grep -v -f contam_ids.txt centroids_${SPS}.fasta > centroids_${SPS}_filtered.fasta
+```
 
 The resulting clean fasta, depleted of non-plant transcripts, was then used as the reference for expression quantification and all downstream analyses.
 
@@ -408,14 +421,14 @@ Estimate transcript abundances against the plant non-redundant CDS using kallist
 
 **Output:**
 
-``centroids_${SPS}.fasta.index`` (kallisto index)
+``centroids_${SPS}_filtered.fasta.index`` (kallisto index)
 
 ```bash
 module load kallisto/0.46.1
 
 SPS="${SPS}"
 
-kallisto index -i centroids_${SPS}.fasta.index centroids_${SPS}.fasta
+kallisto index -i centroids_${SPS}_filtered.fasta.index centroids_${SPS}_filtered.fasta
 ```
 
 ### 2) Counting reads mapping to transcripts
@@ -425,7 +438,7 @@ kallisto index -i centroids_${SPS}.fasta.index centroids_${SPS}.fasta
 Trimmed reads: ``trim_${SAMPLE}_R1.fastq.gz``
 ``trim_${SAMPLE}_R2.fastq.gz``
 
-Index: ``centroids_${SPS}.fasta.index``
+Index: ``centroids_${SPS}_filtered.fasta.index``
 
 **Outputs:**
 
@@ -441,7 +454,7 @@ SAMPLE="${SAMPLE}"
 CPU="${SLURM_NTASKS:-16}"
 
 kallisto quant \
-  -i centroids_${SPS}.fasta.index \
+  -i centroids_${SPS}_filtered.fasta.index \
   -o "${SAMPLE}" \
   -t "${CPU}" \
  trim_${SAMPLE}_R1.fastq.gz \
