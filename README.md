@@ -468,12 +468,12 @@ We removed unigenes with negligible expression, which are likely to represent as
 
 ## Final *de novo* transcriptome datasets
 
-| Species | Unigenes |
-|----------|----------|
-| *Handroanthus chrysanthus*    | 50,859 |
-| *Alzatea verticillata*    |    |
-| *Cedrela montana*    |    |
-| *Graffenrieda emarginata*    | 71,565   |
+| Species | Unigenes | avg_len | max_len |
+|----------|----------|----------|----------|
+| *Handroanthus chrysanthus*    | 50,859 |  823.7  | 15,276 |
+| *Alzatea verticillata*    |    |   |  |
+| *Cedrela montana*    |    |     |  |
+| *Graffenrieda emarginata*    | 71,565 | 647.8 | 12,363 |
 
 
 ## Reproducibility
