@@ -55,6 +55,7 @@ Raw RNA-Seq reads are available at the NCBI:
 - [Evaluating the Assembly](#evaluating-the-assembly)
 - [Functional Annotation](#functional-annotation)
 - [Quantifying gene expression](#quantifying-gene-expression)
+- [Final *de novo* transcriptome datasets](#final-de-novo-transcriptome-datasets)
 - [Reproducibility](#reproducibility)
 - [Software references](#software-references)
 - [Contact](#contact)
