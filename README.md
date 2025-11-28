@@ -461,7 +461,7 @@ kallisto quant \
  trim_${SAMPLE}_R2.fastq.gz
 ```
 
-## Expression-based filtering of lowly expressed unigenes
+### Filtering based on low expression
 
 We removed unigenes with negligible expression, which are likely to represent assembly noise rather than biologically meaningful genes. Unigenes with TPM ≥ 0.5 in at least two samples were retaining for the *de novo* transcriptome.
 
