@@ -461,6 +461,20 @@ kallisto quant \
  trim_${SAMPLE}_R2.fastq.gz
 ```
 
+## Expression-based filtering of lowly expressed unigenes
+
+We removed unigenes with negligible expression, which are likely to represent assembly noise rather than biologically meaningful genes. Unigenes with TPM ≥ 0.5 in at least two samples were retaining for the *de novo* transcriptome.
+
+## Final *de novo* transcriptome datasets
+
+| Species | Unigenes |
+|----------|----------|
+| *Handroanthus chrysanthus*    | 50,859 |
+| *Alzatea verticillata*    |    |
+| *Cedrela montana*    |    |
+| *Graffenrieda emarginata*    | 71,565   |
+
+
 ## Reproducibility
 
 - FastQC 0.12.1; MultiQC 1.9
